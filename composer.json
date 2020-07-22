@@ -1,0 +1,15 @@
+{
+    "name": "kamilbaranskicom/midi2png",
+    "description": "Creates image sequence with piano keyboard from MIDI file",
+    "type": "project",
+    "require": {
+        "motniemtin/midi": "^1.0"
+    },
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Kamil Baranski",
+            "email": "kamilbaranski@gmail.com"
+        }
+    ]
+}

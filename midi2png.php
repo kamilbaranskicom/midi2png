@@ -1,5 +1,12 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(-1); 
+
+require_once('vendor/autoload.php');
+use Motniemtin\Midi\Midi;
+
 /*
 
 midi2png 2020 rewrite
@@ -31,7 +38,7 @@ error_reporting(E_ALL);
 $file = 'margaret_ifiaintgotyou.mid';
 
 if (isset($file)) {
-	require(__DIR__ . '/midiClass/classes/midi.class.php');
+	
 
 	$midi = new Midi();
 	$midi->importMid($file);
@@ -42,8 +49,10 @@ if (isset($file)) {
 	echo 'tempoBpm = ' . $tempoBpm . "\n";
 
 	foreach ($midi->tracks[1] as $fullMessage) {		// we're interested only in first track
-		list($timestamp, $message, $channel, $n, $v) = explode(' ', $fullMessage);
-		if (($message === 'On') || ($message === 'Off') || (($message === 'Par') && ($n === 'c=64'))) {		// we need only note on, note off and sustain.
+		$words = explode(' ', $fullMessage);
+		$message = $words[1];
+		if (($message === 'On') || ($message === 'Off') || (($message === 'Par') && ($words[3] === 'c=64'))) {		// we need only note on, note off and sustain.
+			list($timestamp, $message, $channel, $n, $v) = explode(' ', $fullMessage);
 			echo $fullMessage . "\n";
 		}
 	}

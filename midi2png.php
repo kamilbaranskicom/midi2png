@@ -14,7 +14,8 @@ midi2png 2020 rewrite
 author: kamilbaranski (http://kamilbaranski.com/)
 license: freeware
 
-let's write it once more with midiClass (https://valentin.dasdeck.com/midi/)
+let's write it once more with Midi class
+(uses Motniemtin\Midi package, original from https://valentin.dasdeck.com/midi/)
 
 */
 
@@ -28,17 +29,15 @@ let's write it once more with midiClass (https://valentin.dasdeck.com/midi/)
 </head>
 
 <body>
-
 	<pre>
+	
 <?php
 
 error_reporting(E_ALL);
 
-// $file=$_GET['file'];
 $file = 'margaret_ifiaintgotyou.mid';
 
 if (isset($file)) {
-	
 
 	$midi = new Midi();
 	$midi->importMid($file);
@@ -57,12 +56,9 @@ if (isset($file)) {
 		}
 	}
 
-
-
 	//print_r($txt);
-
-
 };
+
 ?>
 
 	</pre>

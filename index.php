@@ -29,6 +29,7 @@ todo:
 	$dontflush=false;
 	// --------------------------------------------------------------------------------------------------------------------
 	$plik='margaret_ifiaintgotyou.mid';
+	$pngDirectory='png/';
 	
 	$szerokoscbialego=24;
 	$wysokoscbialego=100;
@@ -473,11 +474,12 @@ todo:
 		return $color;
 	}
 	function narysuj($klatka,$wyslijnastdout=false) {
-	  global $wyjsciowyobrazek,$pressed,$iloscklatek,$white,$black,$presw,$presb,$pressusw,$pressusb,$silver;
+		global $wyjsciowyobrazek,$pressed,$iloscklatek,$white,$black,$presw,$presb,$pressusw,$pressusb,$silver;
 		global $przerobbialy,$przerobczarny;
-	  global $ODNOSNIKI;
-	  global $debugtext,$chord;
+		global $ODNOSNIKI;
+		global $debugtext,$chord;
 		global $dontflush;
+		global $pngDirectory;
 	  //echo '  '.$sec.' : ';
 	  //$nazwapliku=round($sec*$iloscklatek).'.png';
 		if ($wyslijnastdout) {
@@ -487,7 +489,7 @@ todo:
 			$dontflush=true;
 			header('Content-Type: image/png;');
 		} else {
-			$nazwapliku=$klatka.'.png';
+			$nazwapliku=$pngDirectory.$klatka.'.png';
 		};
 	  //echo $nazwapliku;
 	  
@@ -668,7 +670,7 @@ todo:
 	
 		for($n=14;$n<strlen($m);$n) {
 			$chunkname=substr($m,$n,4);
-			report('We found chunk '.$chunkname.'!');
+			report('Chunk '.$chunkname.' found!');
 			$length=unp('Nlong',substr($m,$n+4,4));
 			report('It is '.$length.' bytes long.');
 			$chunk=substr($m,$n+4+4,$length);
